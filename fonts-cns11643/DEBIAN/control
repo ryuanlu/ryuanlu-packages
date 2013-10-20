@@ -1,0 +1,9 @@
+Package: fonts-cns11643
+Version: 98.1-1
+Architecture: all
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Installed-Size: 51684
+Section: fonts
+Priority: optional
+Description: CNS11643 TrueType font set, including TW-Sung and TW-Kai
+
