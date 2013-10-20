@@ -1,0 +1,15 @@
+Package: fonts-dynafont-unicode-3.0
+Version: 1.0-1
+Architecture: all
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Installed-Size: 63304
+Section: fonts
+Priority: optional
+Description: Unicode 3.0 fonts made by DynaComware
+ DynaComware Unicode 3.0 fonts:
+ .
+  * DFPMingLight-UN
+  * DFPKaiShuW5-UN
+  * DFPHeiMedium-UN
+ .
+
