@@ -1,0 +1,12 @@
+Package: libaudcore1
+Version: 3.4.1-1
+Architecture: amd64
+Multi-Arch: same
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Installed-Size: 276
+Depends: libgtk-3-0 (>= 3.0.0)
+Section: libs
+Priority: optional
+Homepage: http://audacious-media-player.org/
+Description: audacious core engine library
+
