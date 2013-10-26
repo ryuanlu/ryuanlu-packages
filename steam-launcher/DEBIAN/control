@@ -1,11 +1,9 @@
 Package: steam-launcher
-Source: steam
-Version: 1.0.0.43
+Version: 1.0.0.43-1
 Architecture: all
-Maintainer: Valve Corporation <linux@steampowered.com>
-Installed-Size: 2150
-Depends: python, curl, libc6 (>= 2.15), python-apt, xterm | gnome-terminal | konsole, xz-utils, zenity
-Recommends: jockey-common
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Installed-Size: 8952
+Depends: python, curl, libc6 (>= 2.13), python-apt, xterm | gnome-terminal | konsole, xz-utils, zenity
 Breaks: steam64
 Replaces: steam, steam64
 Section: games

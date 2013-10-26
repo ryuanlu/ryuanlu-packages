@@ -183,6 +183,20 @@ if ! check_bootstrap "$LAUNCHSTEAMDIR"; then
 	exit 1
 fi
 
+# Section added by Ruei-Yuan Lu starts here
+
+function zenity ()
+{
+	# clean LD_LIBRARY_PATH to prevent from segmentation fault
+	LD_LIBRARY_PATH=
+	return $(/usr/bin/zenity "$@")
+}
+
+export -f zenity
+export LD_LIBRARY_PATH=/usr/lib/steam/i386-linux-gnu/:/usr/lib/steam/x86_64-linux-gnu/:/usr/lib:/usr/lib32
+
+# section ends
+
 # go to the install directory and run the client
 cp "$LAUNCHSTEAMBOOTSTRAPFILE" "$LAUNCHSTEAMDIR/bootstrap.tar.xz"
 cd "$LAUNCHSTEAMDIR"
