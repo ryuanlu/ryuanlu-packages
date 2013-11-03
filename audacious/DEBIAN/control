@@ -1,9 +1,9 @@
 Package: audacious
-Version: 3.4.1-1
+Version: 3.4.2-1
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
 Installed-Size: 1640
-Depends: libaudclient2 (= 3.4.1-1), libaudcore1 (= 3.4.1-1), audacious-plugins (= 3.4.1-1)
+Depends: libaudclient2 (= 3.4.2-1), libaudcore1 (= 3.4.2-1), audacious-plugins (= 3.4.2-1)
 Section: sound
 Priority: optional
 Homepage: http://audacious-media-player.org/
