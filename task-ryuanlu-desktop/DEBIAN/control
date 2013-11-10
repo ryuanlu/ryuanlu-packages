@@ -1,0 +1,12 @@
+Package: task-ryuanlu-desktop
+Version: 1.0
+Architecture: amd64
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Installed-Size: 0
+Depends: lsb, task-gnome-desktop
+Recommends: 
+Section: tasks
+Priority: optional
+Homepage: http://rueiyuanlu.blogspot.com/
+Description: Customized desktop environment by Ruei-Yuan Lu
+

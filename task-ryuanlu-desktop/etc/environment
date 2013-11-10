@@ -1,0 +1,9 @@
+XMODIFIERS="@im=ibus"
+GTK_IM_MODULE=ibus
+QT_IM_MODULE=ibus
+CLUTTER_IM_MODULE=ibus
+CFLAGS="-pipe -O2 -march=native"
+CXXFLAGS="-pipe -O2 -march=native"
+CLUTTER_PAINT=disable-clipped-redraws:disable-culling
+WINEDEBUG=-all
+
