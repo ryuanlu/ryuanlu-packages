@@ -1,0 +1,3 @@
+deb http://opensource.nchc.org.tw/debian-multimedia/ wheezy main
+deb-src http://opensource.nchc.org.tw/debian-multimedia/ wheezy main
+
