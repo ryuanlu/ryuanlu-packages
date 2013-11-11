@@ -3,7 +3,7 @@ Version: 1.0
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
 Installed-Size: 0
-Depends: alacarte, alsa-utils, audacious, ca-certificates, cups-pk-helper, dosfstools, file-roller, flac, flashplugin-nonfree, fonts-cns11643, fonts-dynafont-unicode-3.0, fonts-liberation, gedit-plugins, gimp, gnome-shell-extensions, gnome-tweak-tool, gthumb, ibus-chewing, ibus-clutter, ibus-gtk, ibus-gtk3, ibus-mozc, ibus-qt4, libasound2-plugins:i386, lsb, network-manager-gnome, ntfs-3g, paman, pavucontrol, pcmanx-gtk2, qt4-qtconfig, scrot, seahorse, steam-launcher, task-gnome-desktop, telepathy-gabble, unrar, unzip, vlc
+Depends: alacarte, alsa-utils, audacious, ca-certificates, cups-pk-helper, dosfstools, file-roller, flac, flashplugin-nonfree, fonts-cns11643, fonts-dynafont-unicode-3.0, fonts-liberation, fonts-opendesktop, gedit-plugins, gimp, gnome-shell-extensions, gnome-tweak-tool, gthumb, ibus-chewing, ibus-clutter, ibus-gtk, ibus-gtk3, ibus-mozc, ibus-qt4, libasound2-plugins:i386, lsb, network-manager-gnome, ntfs-3g, paman, pavucontrol, pcmanx-gtk2, qt4-qtconfig, scrot, seahorse, smplayer, steam-launcher, task-gnome-desktop, telepathy-gabble, unrar, unzip, vim, vlc, vlc-plugin-pulse
 Section: tasks
 Priority: optional
 Homepage: http://rueiyuanlu.blogspot.com/
