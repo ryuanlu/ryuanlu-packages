@@ -1,0 +1,11 @@
+Package: ryuanlu-apt
+Version: 1.0
+Architecture: all
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Installed-Size: 36
+Depends: gnupg
+Section: misc
+Priority: optional
+Homepage: http://rueiyuanlu.blogspot.com/
+Description: Add Ruei-Yuan Lu's apt repository to sources.list
+
