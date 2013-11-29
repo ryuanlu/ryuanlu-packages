@@ -1,9 +1,11 @@
 Package: steam-launcher
-Version: 1.0.0.43-1
+Source: steam
+Version: 1.0.0.45-1
 Architecture: all
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Installed-Size: 8952
+Installed-Size: 2430
 Depends: python, curl, libc6 (>= 2.13), python-apt, xterm | gnome-terminal | konsole, xz-utils, zenity
+Recommends: jockey-common
 Breaks: steam64
 Replaces: steam, steam64
 Section: games

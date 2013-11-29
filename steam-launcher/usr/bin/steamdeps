@@ -340,7 +340,7 @@ def main():
 	for line in fp:
 		++lineNumber
 		line = line.strip()
-		if ( line == "" or line[0] == '#' or line == "jockey-common" ):
+		if ( line == "" or line[0] == '#' ):
 			continue
 
 		match = re.match( config_pattern, line )
