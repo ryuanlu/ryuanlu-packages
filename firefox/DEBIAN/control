@@ -1,8 +1,8 @@
 Package: firefox
-Version: 31.0-1
+Version: 32.0.2-1
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Installed-Size: 78900
+Installed-Size: 82004
 Section: web
 Priority: optional
 Homepage: http://www.mozilla.org/en-US/firefox/all/
