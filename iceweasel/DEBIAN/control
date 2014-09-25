@@ -1,8 +1,8 @@
 Package: iceweasel
-Version: 26.0-1
+Version: 32.0-1
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Depends: firefox (>= 26.0)
+Depends: firefox (>= 32.0)
 Provides: www-browser, gnome-www-browser
 Section: web
 Priority: optional
