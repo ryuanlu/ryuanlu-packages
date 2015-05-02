@@ -1,3 +1,3 @@
-deb http://dl.dropboxusercontent.com/u/13723674/debian/ wheezy main non-free
-deb http://dl.dropboxusercontent.com/u/13723674/debian/ wheezy-private main non-free
+deb http://dl.dropboxusercontent.com/u/13723674/debian/ jessie main non-free
+deb http://dl.dropboxusercontent.com/u/13723674/debian/ jessie-private main non-free
 
