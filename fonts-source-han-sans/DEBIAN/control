@@ -1,0 +1,9 @@
+Package: fonts-source-han-sans
+Version: 1.002
+Architecture: all
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Installed-Size: 158012
+Section: fonts
+Priority: optional
+Description: Source Han Sans
+ Source Han Sans is a set of OpenType/CFF Pan-CJK fonts.
