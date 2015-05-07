@@ -1,0 +1,10 @@
+Package: ffmpeg
+Version: 2.6.2-1
+Architecture: amd64
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Depends: libx264-142, libx11-6, libass5, libpulse0, libfdk-aac0, librtmp1
+Section: video
+Priority: optional
+Homepage: https://www.ffmpeg.org/
+Description: FFmpeg
+ FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. 
