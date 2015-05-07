@@ -1,14 +1,13 @@
 Package: wine
-Version: 1.6.0-1
+Version: 1.7.35-1
 Architecture: i386
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Installed-Size: 159560
 Section: otherosfs
 Priority: optional
 Homepage: http://www.winehq.org/
 Description: Run Windows applications on Linux, BSD, Solaris and Mac OS X.
  Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Windows applications on several POSIX-compliant operating systems, such as Linux, Mac OSX, & BSD. Instead of simulating internal Windows logic like a virtual machine or emulator, Wine translates Windows API calls into POSIX calls on-the-fly, eliminating the performance and memory penalties of other methods and allowing you to cleanly integrate Windows applications into your desktop.
  .
-  * Built with patches for GW2
+  * Built with CSMT
  .
 
