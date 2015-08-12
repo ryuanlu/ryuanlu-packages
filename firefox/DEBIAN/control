@@ -1,8 +1,8 @@
 Package: firefox
-Version: 39.0.3-1
+Version: 40.0-1
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Installed-Size: 91624
+Installed-Size: 92768
 Section: web
 Priority: optional
 Homepage: http://www.mozilla.org/en-US/firefox/all/
