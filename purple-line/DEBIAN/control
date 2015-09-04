@@ -1,0 +1,11 @@
+Package: pidgin-line
+Version: 20150815-1
+Architecture: amd64
+Multi-Arch: same
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Depends: libpurple0 (>= 2.10.11), libglib2.0-0 (>=2.42.1), libstdc++6 (>=4.9.2), libssl1.0.0
+Section: net
+Priority: optional
+Homepage: http://altrepo.eu/git/purple-line
+Description: libpurple (Pidgin, Finch) protocol plugin for LINE
+
