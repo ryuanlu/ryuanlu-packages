@@ -1,9 +1,9 @@
 Package: audacious
-Version: 3.4.2-1
+Version: 3.8-1
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Installed-Size: 1640
-Depends: libaudclient2 (= 3.4.2-1), libaudcore1 (= 3.4.2-1), audacious-plugins (= 3.4.2-1), libguess1
+Depends: libatk1.0-0, libc6, libcairo2, libcairo-gobject2, libgcc1, libgdk-pixbuf2.0-0, libglib2.0-0, libgtk-3-0, libpango-1.0-0, libpangocairo-1.0-0, libstdc++6
+Suggests: audacious-plugins (=3.8-1)
 Section: sound
 Priority: optional
 Homepage: http://audacious-media-player.org/
