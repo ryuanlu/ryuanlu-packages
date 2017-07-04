@@ -1,0 +1,12 @@
+Package: makemkv
+Version: 1.10.6-1
+Architecture: amd64
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Depends: libc6, libgcc1, libqt5core5a, libqt5dbus5, libqt5gui5, libqt5widgets5, libstdc++6, zlib1g
+Section: video
+Priority: optional
+Homepage: http://www.makemkv.com/
+Description: MakeMKV BETA
+ MakeMKV is your one-click solution to convert video that you own into free and patents-unencumbered format that can be played everywhere. MakeMKV is a format converter, otherwise called "transcoder". It converts the video clips from proprietary (and usually encrypted) disc into a set of MKV files, preserving most information but not changing it in any way. The MKV format can store multiple video/audio tracks with all meta-information and preserve chapters. There are many players that can play MKV files nearly on all platforms, and there are tools to convert MKV files to many formats, including DVD and Blu-ray discs.
+ . 
+ Additionally MakeMKV can instantly stream decrypted video without intermediate conversion to wide range of players, so you may watch Blu-ray and DVD discs with your favorite player on your favorite OS or on your favorite device.
