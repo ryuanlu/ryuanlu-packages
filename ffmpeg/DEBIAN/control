@@ -1,12 +1,12 @@
 Package: ffmpeg
-Version: 3.3.2-1
+Version: 3.3.3-1
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Depends: libasound2, libc6, libfdk-aac1, libjack-jackd2-0, libva1, libva-drm1, libva-x11-1, libvdpau1, libx11-6, libx264-148, libxcb1, libxcb-shape0, libxcb-xfixes0, zlib1g
+Depends: libasound2, libc6, libfdk-aac1, libjack-jackd2-0, libpulse0, libva1, libva-drm1, libva-x11-1, libvdpau1, libx11-6, libx264-148, libxcb1, libxcb-shape0, libxcb-xfixes0, zlib1g
 Section: non-free/video
 Priority: optional
 Homepage: https://www.ffmpeg.org/
 Description: FFmpeg
  FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation.
  .
- Configuration: --prefix=/opt/ffmpeg --enable-gpl --enable-nonfree --enable-libass --enable-libx264 --enable-libfdk_aac --enable-libfreetype --enable-libfontconfig --disable-debug --enable-shared --disable-static --enable-rpath
+ Configuration: ./configure --prefix=/opt/ffmpeg --enable-gpl --enable-nonfree --enable-libass --enable-libx264 --enable-libfdk_aac --enable-libfreetype  --enable-libfontconfig --disable-debug --disable-static --enable-shared --enable-rpath
