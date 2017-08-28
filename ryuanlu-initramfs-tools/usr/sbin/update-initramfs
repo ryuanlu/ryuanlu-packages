@@ -1,0 +1,151 @@
+#!/bin/sh
+
+SELF_REALPATH=`realpath $0`
+MODULE_LIST="/etc/initramfs-tools/modules"
+OPTS=`getopt -o k:r:f -- "$@" 2>/dev/null`
+ASK="-i"
+
+while true
+do
+	case "$1" in
+		-k)
+			KERNEL_VERSION="$2"
+			shift 2
+			;;
+		-r)
+			ROOT_PATH="$2"
+			shift 2
+			;;
+		-f)
+			ASK=""
+			shift
+			;;
+		*)
+			[ "$1" != "" ] && shift || break
+			;;
+	esac
+done
+
+ROOTFS_INITRD="/tmp/initrd-$$"
+
+if [ "${KERNEL_VERSION}" = "" ]; then
+	KERNEL_VERSION=`uname -r`
+fi
+
+if [ "${ROOT_PATH}" = "" ]; then
+	ROOT_PATH="/"
+fi
+
+get_all_modules ()
+{
+	DEFAULT_MODULES=`sed '/^# DEFAULT MODULE LIST START #$/,/^# DEFAULT MODULE LIST END #$/!d' ${SELF_REALPATH} |sed '/^#/d'|sort|uniq`
+	MODULES="`cat "$MODULE_LIST"|sed '/^#/d'|sort|uniq` $DEFAULT_MODULES"
+	for M in $MODULES
+	do
+		M=`echo "$M"|tr '-' '_'`
+		DEP=`cat $1/lib/modules/$2/modules.dep|grep /$M.ko:`
+		if [ "$DEP" = "" ]; then
+			M=`echo "$M"|tr '_' '-'`
+			DEP=`cat $1/lib/modules/$2/modules.dep|grep /$M.ko:`
+		fi
+
+		DEP_MODULES=`echo "$DEP" |awk -F": " '{print $2}'| tr ' ' '\n'|sed 's,.*/,,g'`
+		echo "$M.ko"
+		echo "$DEP_MODULES"
+	done |sort|sed '/^$/d'|uniq
+}
+
+copy_all_modules ()
+{
+	ALL_MODULES=`get_all_modules $1 $2`
+	for M in $ALL_MODULES
+	do
+		find $1/lib/modules/$2/ -type f -name $M -exec cp -a {} lib/modules/$2/ \;
+	done|sort|uniq
+}
+
+mkdir -p ${ROOTFS_INITRD}
+mount -t tmpfs tmpfs ${ROOTFS_INITRD}
+
+ORIGIN_PWD=$PWD
+
+cd ${ROOTFS_INITRD}
+
+mkdir -p bin
+cp -a /bin/busybox bin/
+ln -s /bin/busybox bin/sh
+sed '/^# init START #$/,/^# init END #$/!d' ${SELF_REALPATH} | sed '/^# init .* #$/d' > ./init
+chmod 755 ./init
+
+mkdir -p lib/modules/${KERNEL_VERSION}
+copy_all_modules ${ROOT_PATH} ${KERNEL_VERSION}
+
+/bin/busybox depmod -a -b ${ROOTFS_INITRD} ${KERNEL_VERSION}
+
+find .|cpio -o -H newc > ../initrd.img-${KERNEL_VERSION}
+cp ${ASK} ../initrd.img-${KERNEL_VERSION} ${ROOT_PATH}/boot/
+
+cd ${ORIGIN_PWD}
+
+umount ${ROOTFS_INITRD}
+rm -rf ${ROOTFS_INITRD}
+
+exit 0
+# SCRIPT END #
+# DEFAULT MODULE LIST START #
+sd_mod
+ahci
+crc32c_generic
+loop
+ext4
+usbhid
+hid_generic
+ohci_pci
+vfat
+# DEFAULT MODULE LIST END #
+# init START #
+#!/bin/sh
+
+/bin/busybox --install -s /bin
+echo -e "\e[?25l"
+clear
+
+# Mount dev, proc, sys
+mkdir proc sys
+mount -t devtmpfs devtmpfs /dev
+mkdir -p dev/pts
+mount -t devpts devpts /dev/pts
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+
+echo 0 > /proc/sys/kernel/printk
+
+# Load modules
+modprobe sd_mod
+modprobe ahci
+modprobe crc32c_generic
+modprobe loop
+modprobe ext4
+
+ROOT=`cat /proc/cmdline |grep -o 'root=[^ ]*'|sed 's/root=//g'`
+IMAGE=`cat /proc/cmdline |grep -o 'image=[^ ]*'|sed 's/image=//g'`
+
+mkdir -p images
+mount ${ROOT} /images -o discard,noatime
+mkdir -p /new_root
+mount /images/${IMAGE} /new_root -o nobarrier,discard,noatime
+mount --move /images /new_root/boot/images
+
+RESULT=`mount|grep -q new_root;echo $?`
+
+if [ "$RESULT" = "1" ]; then
+	modprobe ohci_pci
+	modprobe usbhid
+	modprobe hid_generic
+	exec setsid sh -c 'exec sh </dev/tty1 >/dev/tty1 2>&1'
+fi
+
+echo 4 > /proc/sys/kernel/printk
+exec switch_root /new_root /sbin/init
+# init END #
+
