@@ -1,9 +1,9 @@
 Package: audacious-plugins
-Version: 3.8-1
+Version: 3.9-1
 Architecture: amd64
 Multi-Arch: same
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Depends: audacious (=3.8-1), libasound2, libatk1.0-0, libavcodec56, libavformat56, libavutil54, libc6, libcairo-gobject2, libcairo2, libcurl3-gnutls, libdbus-1-3, libdbus-glib-1-2, libfaad2, libflac8, libfluidsynth1, libgcc1, libgdk-pixbuf2.0-0, libgl1-mesa-glx, libglib2.0-0, libgtk-3-0, libjack0, libmms0, libmp3lame0, libmpg123-0, libnotify4, libogg0, libpango-1.0-0, libpangocairo-1.0-0, libpulse0, libsamplerate0, libsdl2-2.0-0, libsidplayfp3, libsndfile1, libsndio6.1, libsoxr-lsr0, libstdc++6, libvorbis0a, libvorbisenc2, libvorbisfile3, libwavpack1, libx11-6, libxcomposite1, libxml2, libxrender1, zlib1g
+Depends: audacious (=3.9-1), libasound2, libatk1.0-0, libavcodec57, libavformat57, libavutil55, libc6, libcairo-gobject2, libcairo2, libcurl3-gnutls, libdbus-1-3, libdbus-glib-1-2, libfaad2, libflac8, libfluidsynth1, libgcc1, libgdk-pixbuf2.0-0, libgl1-mesa-glx, libglib2.0-0, libgtk-3-0, libjack0|libjack-jackd2-0, libmms0, libmp3lame0, libmpg123-0, libnotify4, libogg0, libpango-1.0-0, libpangocairo-1.0-0, libpulse0, libsamplerate0, libsdl2-2.0-0, libsidplayfp4, libsndfile1, libsndio6.1, libsoxr-lsr0, libstdc++6, libvorbis0a, libvorbisenc2, libvorbisfile3, libwavpack1, libx11-6, libxcomposite1, libxml2, libxrender1, zlib1g
 Section: sound
 Priority: optional
 Homepage: http://audacious-media-player.org/
