@@ -76,6 +76,8 @@ cp -a /bin/busybox bin/
 ln -s /bin/busybox bin/sh
 sed '/^# init START #$/,/^# init END #$/!d' ${SELF_REALPATH} | sed '/^# init .* #$/d' > ./init
 chmod 755 ./init
+sed '/^# shutdown START #$/,/^# shutdown END #$/!d' ${SELF_REALPATH} | sed '/^# shutdown .* #$/d' > ./shutdown
+chmod 755 ./shutdown
 
 mkdir -p lib/modules/${KERNEL_VERSION}
 copy_all_modules ${ROOT_PATH} ${KERNEL_VERSION}
@@ -134,7 +136,10 @@ mkdir -p images
 mount ${ROOT} /images -o discard,noatime
 mkdir -p /new_root
 mount /images/${IMAGE} /new_root -o nobarrier,discard,noatime
-mount --move /images /new_root/boot/images
+mount -t tmpfs tmpfs /new_root/run -o mode=755,nodev
+mkdir /new_root/run/initramfs
+cp -a /bin /new_root/run/initramfs/
+cp -a /shutdown /new_root/run/initramfs/
 
 RESULT=`mount|grep -q new_root;echo $?`
 
@@ -148,4 +153,20 @@ fi
 echo 4 > /proc/sys/kernel/printk
 exec switch_root /new_root /sbin/init
 # init END #
+# shutdown START #
+#!/bin/sh
+
+PATH=/bin
+
+umount -l /oldroot/dev
+umount -l /oldroot/sys
+umount -l /oldroot/proc
+umount -l /oldroot/run
+umount /oldroot
+
+[ "$?" = "0" ] || sh
+
+$1 -f
+
+# shutdown END#
 
