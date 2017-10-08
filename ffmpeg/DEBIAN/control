@@ -1,5 +1,5 @@
 Package: ffmpeg
-Version: 3.3.3-1
+Version: 3.3.4-1
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
 Depends: libasound2, libc6, libfdk-aac1, libjack-jackd2-0, libpulse0, libva1, libva-drm1, libva-x11-1, libvdpau1, libx11-6, libx264-148, libxcb1, libxcb-shape0, libxcb-xfixes0, zlib1g
