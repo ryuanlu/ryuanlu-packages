@@ -1,10 +1,9 @@
 Package: firefox
-Version: 42.0-1
+Version: 57.0-1
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Installed-Size: 96008
 Section: web
 Priority: optional
-Homepage: http://www.mozilla.org/en-US/firefox/all/
+Homepage: https://www.mozilla.org/zh-TW/firefox/new/
 Description: Mozilla Firefox (zh_TW)
- Mozilla Firefox with zh_TW language package from official site.
+ Mozilla Firefox with zh_TW language package from the official site.

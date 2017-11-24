@@ -1,0 +1,27 @@
+#!/bin/sh
+
+BASEDIR=$HOME/.local/opt
+
+if [ "$UID" = "0" ]; then
+	exit 0
+fi
+
+install_firefox () {
+	DOWNLOAD_FILE_PATH=/tmp/firefox.tar.bz2
+
+	if [ -f "/usr/bin/zenity" ]; then
+		wget --content-disposition "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=zh-TW" -O ${DOWNLOAD_FILE_PATH} 2>&1|grep --line-buffered -o "[0-9]*%" | zenity --progress=bar --title="Mozilla Firefox" --text="Downloading ..." --auto-close --no-cancel
+	else
+		wget --content-disposition "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=zh-TW" -O ${DOWNLOAD_FILE_PATH}
+	fi
+	tar xf ${DOWNLOAD_FILE_PATH} -C $1
+	rm ${DOWNLOAD_FILE_PATH}
+}
+
+if [ ! -f "${BASEDIR}/firefox/firefox" ]; then
+	mkdir -p ${BASEDIR}/firefox
+	install_firefox ${BASEDIR}
+fi
+
+exec ${BASEDIR}/firefox/firefox "$@"
+
