@@ -1,5 +1,5 @@
 Package: makemkv
-Version: 1.10.7-1
+Version: 1.10.8-1
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
 Depends: libc6, libgcc1, libqt5core5a, libqt5dbus5, libqt5gui5, libqt5widgets5, libstdc++6, zlib1g
