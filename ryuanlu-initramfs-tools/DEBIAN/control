@@ -1,5 +1,5 @@
 Package: ryuanlu-initramfs-tools
-Version: 0.2-1
+Version: 0.3-1
 Architecture: all
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
 Depends: busybox-static, cpio, kmod

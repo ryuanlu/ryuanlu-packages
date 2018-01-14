@@ -20,6 +20,10 @@ do
 			ASK=""
 			shift
 			;;
+		-s)
+			SYSLINUX_DEVICE="$2"
+			shift 2
+			;;
 		*)
 			[ "$1" != "" ] && shift || break
 			;;
@@ -87,6 +91,12 @@ copy_all_modules ${ROOT_PATH} ${KERNEL_VERSION}
 find .|cpio -o -H newc > ../initrd.img-${KERNEL_VERSION}
 cp ${ASK} ../initrd.img-${KERNEL_VERSION} ${ROOT_PATH}/boot/
 
+if [ "${SYSLINUX_DEVICE}" != "" ]; then
+	mount ${SYSLINUX_DEVICE} ${ROOT_PATH}/boot/syslinux
+	cp ../initrd.img-${KERNEL_VERSION} ${ROOT_PATH}/boot/syslinux/
+	umount ${ROOT_PATH}/boot/syslinux
+fi
+
 cd ${ORIGIN_PWD}
 
 umount ${ROOTFS_INITRD}
@@ -107,6 +117,9 @@ vfat
 # DEFAULT MODULE LIST END #
 # init START #
 #!/bin/sh
+
+MAX_MOUNT_RETRY_TIMES=50
+MOUNT_RETRY_INTERVAL=0.1
 
 /bin/busybox --install -s /bin
 echo -e "\e[?25l"
@@ -133,13 +146,24 @@ ROOT=`cat /proc/cmdline |grep -o 'root=[^ ]*'|sed 's/root=//g'`
 IMAGE=`cat /proc/cmdline |grep -o 'image=[^ ]*'|sed 's/image=//g'`
 
 mkdir -p images
-mount ${ROOT} /images -o discard,noatime
+
+MOUNT_RETRY_TIMES=0
+while [ "${MOUNT_RETRY_TIMES}" -lt "$MAX_MOUNT_RETRY_TIMES" ]
+do
+	mount ${ROOT} /images -o discard,noatime 2>/dev/null && break
+	sleep $MOUNT_RETRY_INTERVAL
+	MOUNT_RETRY_TIMES=$(($MOUNT_RETRY_TIMES + 1))
+done
+
 mkdir -p /new_root
 mount /images/${IMAGE} /new_root -o nobarrier,discard,noatime
-mount -t tmpfs tmpfs /new_root/run -o mode=755,nodev
-mkdir /new_root/run/initramfs
-cp -a /bin /new_root/run/initramfs/
-cp -a /shutdown /new_root/run/initramfs/
+
+if [ "$?" = "0" ]; then
+	mount -t tmpfs tmpfs /new_root/run -o mode=755,nodev
+	mkdir /new_root/run/initramfs
+	cp -a /bin /new_root/run/initramfs/
+	cp -a /shutdown /new_root/run/initramfs/
+fi
 
 RESULT=`mount|grep -q new_root;echo $?`
 
