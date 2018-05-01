@@ -2,8 +2,9 @@
 
 SELF_REALPATH=`realpath $0`
 MODULE_LIST="/etc/initramfs-tools/modules"
-OPTS=`getopt -o k:r:f -- "$@" 2>/dev/null`
+OPTS=`getopt -o k:r:f:b -- "$@" 2>/dev/null`
 ASK="-i"
+MAKE_BASE="0"
 
 while true
 do
@@ -20,9 +21,9 @@ do
 			ASK=""
 			shift
 			;;
-		-s)
-			SYSLINUX_DEVICE="$2"
-			shift 2
+		-b)
+			MAKE_BASE="1"
+			shift
 			;;
 		*)
 			[ "$1" != "" ] && shift || break
@@ -75,27 +76,26 @@ ORIGIN_PWD=$PWD
 
 cd ${ROOTFS_INITRD}
 
-mkdir -p bin
-cp -a /bin/busybox bin/
-ln -s /bin/busybox bin/sh
-sed '/^# init START #$/,/^# init END #$/!d' ${SELF_REALPATH} | sed '/^# init .* #$/d' > ./init
-chmod 755 ./init
-sed '/^# shutdown START #$/,/^# shutdown END #$/!d' ${SELF_REALPATH} | sed '/^# shutdown .* #$/d' > ./shutdown
-chmod 755 ./shutdown
+INITRD_NAME=initrd-${KERNEL_VERSION}
 
-mkdir -p lib/modules/${KERNEL_VERSION}
-copy_all_modules ${ROOT_PATH} ${KERNEL_VERSION}
+if [ "$MAKE_BASE" = "1" ]; then
+	mkdir -p bin
+	cp -a /bin/busybox bin/
+	ln -s /bin/busybox bin/sh
+	sed '/^# init START #$/,/^# init END #$/!d' ${SELF_REALPATH} | sed '/^# init .* #$/d' > ./init
+	chmod 755 ./init
+	sed '/^# shutdown START #$/,/^# shutdown END #$/!d' ${SELF_REALPATH} | sed '/^# shutdown .* #$/d' > ./shutdown
+	chmod 755 ./shutdown
+	INITRD_NAME=initrd-base
+else
+	mkdir -p lib/modules/${KERNEL_VERSION}
+	copy_all_modules ${ROOT_PATH} ${KERNEL_VERSION}
 
-/bin/busybox depmod -a -b ${ROOTFS_INITRD} ${KERNEL_VERSION}
-
-find .|cpio -o -H newc > ../initrd.img-${KERNEL_VERSION}
-cp ${ASK} ../initrd.img-${KERNEL_VERSION} ${ROOT_PATH}/boot/
-
-if [ "${SYSLINUX_DEVICE}" != "" ]; then
-	mount ${SYSLINUX_DEVICE} ${ROOT_PATH}/boot/syslinux
-	cp ../initrd.img-${KERNEL_VERSION} ${ROOT_PATH}/boot/syslinux/
-	umount ${ROOT_PATH}/boot/syslinux
+	/bin/busybox depmod -a -b ${ROOTFS_INITRD} ${KERNEL_VERSION}
 fi
+
+find .|cpio -o -H newc > ../${INITRD_NAME}
+cp ${ASK} ../${INITRD_NAME} ${ROOT_PATH}/boot/
 
 cd ${ORIGIN_PWD}
 
@@ -105,14 +105,10 @@ rm -rf ${ROOTFS_INITRD}
 exit 0
 # SCRIPT END #
 # DEFAULT MODULE LIST START #
-sd_mod
-ahci
-crc32c_generic
+nvme
+crc32c_intel
 loop
 ext4
-usbhid
-hid_generic
-ohci_pci
 vfat
 # DEFAULT MODULE LIST END #
 # init START #
@@ -136,9 +132,8 @@ mount -t sysfs sysfs /sys
 echo 0 > /proc/sys/kernel/printk
 
 # Load modules
-modprobe sd_mod
-modprobe ahci
-modprobe crc32c_generic
+modprobe nvme
+modprobe crc32c_intel
 modprobe loop
 modprobe ext4
 
@@ -160,6 +155,7 @@ mount /images/${IMAGE} /new_root -o nobarrier,discard,noatime
 
 if [ "$?" = "0" ]; then
 	mount -t tmpfs tmpfs /new_root/run -o mode=755,nodev
+	mount -o bind /images/system/log /new_root/var/log/
 	mkdir /new_root/run/initramfs
 	cp -a /bin /new_root/run/initramfs/
 	cp -a /shutdown /new_root/run/initramfs/
@@ -186,6 +182,7 @@ umount -l /oldroot/dev
 umount -l /oldroot/sys
 umount -l /oldroot/proc
 umount -l /oldroot/run
+umount -l /oldroot/var/log
 umount /oldroot
 
 [ "$?" = "0" ] || sh
