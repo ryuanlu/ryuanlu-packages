@@ -1,8 +1,8 @@
 Package: ffmpeg
-Version: 4.0.1-1
+Version: 4.1.0-1
 Architecture: amd64
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Depends: libasound2, libass5, libc6, libfdk-aac1, libfontconfig1, libfreetype6, libpulse0, libsdl2-2.0-0, libsndio6.1, libva-drm1, libva-x11-1, libva1, libx11-6, libx264-148, libx265-95, libxcb-shape0, libxcb-xfixes0, libxcb1, zlib1g
+Depends: libasound2, libass5, libc6, libdrm2, libfdk-aac1, libfontconfig1, libfreetype6, libpulse0, libsdl2-2.0-0, libva-drm1, libva-x11-1, libva1, libx11-6, libx264-148, libx265-95, libxcb-shape0, libxcb-xfixes0, libxcb1, zlib1g
 Section: non-free/video
 Priority: optional
 Homepage: https://www.ffmpeg.org/
