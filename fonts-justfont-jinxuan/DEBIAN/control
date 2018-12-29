@@ -1,0 +1,7 @@
+Package: fonts-justfont-jinxuan
+Version: 2.3
+Architecture: all
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Section: fonts
+Priority: optional
+Description: justfont Jinxuan fonts
