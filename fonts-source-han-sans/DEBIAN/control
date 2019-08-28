@@ -1,8 +1,7 @@
 Package: fonts-source-han-sans
-Version: 1.004
+Version: 2.001-1
 Architecture: all
 Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
-Installed-Size: 158004
 Section: fonts
 Priority: optional
 Description: Source Han Sans
