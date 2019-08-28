@@ -1,0 +1,8 @@
+Package: fonts-source-han-serif
+Version: 1.001-1
+Architecture: all
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Section: fonts
+Priority: optional
+Description: Source Han Serif
+ Source Han Serif is a set of OpenType/CFF Pan-CJK fonts.
