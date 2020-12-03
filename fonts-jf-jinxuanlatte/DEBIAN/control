@@ -1,0 +1,7 @@
+Package: fonts-jf-jinxuanlatte
+Version: 2.0-1
+Architecture: all
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Section: fonts
+Priority: optional
+Description: justfont Jinxuan Latte fonts
