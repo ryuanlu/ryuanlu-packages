@@ -1,0 +1,21 @@
+Package: amdocl-opencl-icd
+Version: 21.30-1
+Architecture: amd64
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Depends: libc6, libgcc-s1, libnuma1, libstdc++6
+Provides: opencl-icd
+Section: libs
+Priority: optional
+Homepage: http://developer.amd.com/resources/heterogeneous-computing/opencl-zone/
+Description: ROCr OpenCL Runtime
+ OpenCL (Open Computing Language) is a multivendor open standard for
+ general-purpose parallel programming of heterogeneous systems that include
+ CPUs, GPUs and other processors.
+ .
+ The OpenCL installable client driver loader (ICD Loader) acts as a dispatcher
+ between an OpenCL application and one (or more) installable client drivers
+ (ICD) that can be from any vendor. At least one ICD (and the corresponding
+ hardware) is required to run OpenCL applications.
+ .
+ This package contains the ICD Loader library provided by AMD.
+
