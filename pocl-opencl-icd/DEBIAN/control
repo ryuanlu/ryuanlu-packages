@@ -1,0 +1,16 @@
+Package: pocl-opencl-icd
+Version: 1.8-1
+Architecture: amd64
+Maintainer: 盧瑞元 (Ruei-Yuan Lu) <RueiYuan.Lu@gmail.com>
+Depends: libc6, libgcc-s1, libhwloc15, libllvm11, libstdc++6
+Provides: opencl-icd, libpocl2, libpocl-dev, libpocl2-common
+Section: libs
+Priority: optional
+Homepage: http://portablecl.org
+Tags: role::shared-lib
+Description: pocl ICD
+ Portable Computing Language is an open source implementation of the OpenCL standard which can be easily adapted for new targets. One of the goals of the project is improving performance
+ portability of OpenCL programs, avoiding the need for target-dependent manual optimizations. A "native" target is included, which allows running OpenCL kernels on the host (CPU). 
+ .
+ This package allows one to use pocl as an installable client driver (ICD) for OpenCL.
+
